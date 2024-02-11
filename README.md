@@ -1,22 +1,22 @@
-#WorkSample
-#####Author: William McCarty
-#####2024
+# WorkSample
+##### Author: William McCarty
+##### 2024
 ----
-###Description
+### Description
 ----
 This is a simple project that has two parts.  First is a set of Calculation that store the result in a MongoDB.  This is similar to how a calculation has the history function.  As of this writing it simply takes in a set of numbers and does the same operations.
 
 If you are wanting to evaluate different combinations of operators in the same equation, then you would use the Equation Services.  In this you can build your equation piece by piece.  It accepts any numeric value and one of four operations, that are both considered terms.  These are also saved in MongoDB, but with a different structure to allow for easier access and processing.  It also allows for multiple equations to be worked on in parallel.
 
 ----
-###Requirements
+### Requirements
 ----
 - Java
 - MongoDB
 - Gradle
 - mongo-migrate
 ----
-###Running Program
+### Running Program
 ----
                 
 1. Start Monogo db, how I do it is with the following command, you will need to adjust the path files to your local machine
@@ -40,14 +40,14 @@ or
 6. To Test you can use Postman to submit request for each endpoint.  Below is an example for all endpoints
 
 ----
-###API
+### API
 ----
 #### /sum-values
 POST
 Summary: Gives the sum of all values passed in the request
 
 
-#####Example
+##### Example
 - Request
 ```
 {
@@ -66,7 +66,7 @@ POST
 Summary: Gives the subtracted value of all values passed in the request
 
 
-#####Example
+##### Example
 - Request
 ```
 {
@@ -85,7 +85,7 @@ POST
 Summary: Gives divided value of all values passed in the request
 
 
-#####Example
+##### Example
 - Request
 ```
 {
@@ -104,7 +104,7 @@ POST
 Summary: Gives Multiplied value of all values passed in the request
 
 
-#####Example
+##### Example
 - Request
 ```
 {
@@ -123,7 +123,7 @@ POST
 Summary: Adds the Term to the Equation Id passed in the request
 
 
-#####Example
+##### Example
 - Request
 ```
 {
@@ -143,7 +143,7 @@ GET
 Summary: Print the Equation of the Id in the request
 
 
-#####Example
+##### Example
 - Request
 ```
 {
@@ -162,7 +162,7 @@ GET
 Summary: Evaluates the Equation of the Id in the request
 
 
-#####Example
+##### Example
 - Request
 ```
 {
@@ -181,7 +181,7 @@ POST
 Summary: Clears the Equation of the Id in the request
 
 
-#####Example
+##### Example
 - Request
 ```
 {
