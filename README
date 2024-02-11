@@ -1,144 +1,196 @@
-==============================
-WorkSample
-Author: William McCarty
-2024
-==============================
-Description: This is a simple project that has two parts.  First is a set of Calculation that store the result in
-a MongoDB.  This is similar to how a calculation has the history function.  As of this writing it simply takes in a
-set of numbers and does the same operations.
+#WorkSample
+#####Author: William McCarty
+#####2024
+----
+###Description
+----
+This is a simple project that has two parts.  First is a set of Calculation that store the result in a MongoDB.  This is similar to how a calculation has the history function.  As of this writing it simply takes in a set of numbers and does the same operations.
 
-If you are wanting to evaluate different combinations of operators in the same equation, then you would use the
-Equation Services.  In this you can build your equation piece by piece.  It accepts any numeric value and one of
-four operations, that are both considered terms.  These are also saved in MongoDB, but with a different structure
-to allow for easier access and processing.  It also allows for multiple equations to be worked on in parallel.
+If you are wanting to evaluate different combinations of operators in the same equation, then you would use the Equation Services.  In this you can build your equation piece by piece.  It accepts any numeric value and one of four operations, that are both considered terms.  These are also saved in MongoDB, but with a different structure to allow for easier access and processing.  It also allows for multiple equations to be worked on in parallel.
 
-==============================
-Requirements
-==============================
-Java
-MongoDB
-Gradle
-mongo-migrate
-
-==============================
-Running Program
-==============================
-1. Start Monogo db, how I do it is with the following command, you will need to adjust the path files to your local
-machine
-
-mongod.exe --auth --dbpath="G:\Mongo\data\db"
+----
+###Requirements
+----
+- Java
+- MongoDB
+- Gradle
+- mongo-migrate
+----
+###Running Program
+----
+                
+1. Start Monogo db, how I do it is with the following command, you will need to adjust the path files to your local machine
+`mongod.exe --auth --dbpath="G:\Mongo\data\db"`
 
 2. Create authorized User in mongo
+		monogosh
 
-monogosh
-
-db.createUser({ user: "user" , pwd: "password", roles: ["userAdminAnyDatabase", "dbAdminAnyDatabase", "readWriteAnyDatabase"]})
+		db.createUser({ user: "user" , pwd: "password", roles: ["userAdminAnyDatabase", "dbAdminAnyDatabase", "readWriteAnyDatabase"]})`
 
 3. Run the migrations
-
-migrate-mongo up
-
+`migrate-mongo up`
 4. At this point you should be able to see the database in mongodb
-5.Run Server by either running
-gradle clean
-gradle build
-gradle bootRun
-
+5. Run Server by either running
+		gradle clean
+		gradle build
+		gradle bootRun
 or
+`.\startServer.bat`
 
-.\startServer.bat
+6. To Test you can use Postman to submit request for each endpoint.  Below is an example for all endpoints
 
-6.To Test you can use Postman to submit request for each endpoint.  Below is an example for all endpoints
-
-==============================
-Example Endpoint APIs
-==============================
-/sum-values
+----
+###API
+----
+#### /sum-values
 POST
-request
+Summary: Gives the sum of all values passed in the request
+
+
+#####Example
+- Request
+```
 {
   "Values": [1, 2, 3, 4, 5]
 }
-response
+```
+- Response
+```
 {
     "Result": 15.0
 }
-==============================
-/sub-values
+```
+----
+#### /sub-values
 POST
-request
+Summary: Gives the subtracted value of all values passed in the request
+
+
+#####Example
+- Request
+```
 {
   "Values": [1, 2, 3, 4, 5]
 }
-response
+```
+- Response
+```
 {
     "Result": -13.0
 }
-==============================
-/div-values
+```
+----
+#### /div-values
 POST
-request
+Summary: Gives divided value of all values passed in the request
+
+
+#####Example
+- Request
+```
 {
   "Values": [1, 2, 3, 4, 5]
 }
-response
+```
+- Response
+```
 {
     "Result": 0.008333334
 }
-==============================
-/mult-values
+```
+----
+#### /mult-values
 POST
-request
+Summary: Gives Multiplied value of all values passed in the request
+
+
+#####Example
+- Request
+```
 {
   "Values": [1, 2, 3, 4, 5]
 }
-response
+```
+- Response
+```
 {
     "Result": 120.0
 }
-==============================
-/add-to-equation
+```
+----
+#### /add-to-equation
 POST
-request
+Summary: Adds the Term to the Equation Id passed in the request
+
+
+#####Example
+- Request
+```
 {
   "Id": "3",
   "Term":"1"
 }
-response
+```
+- Response
+```
 {
     "Success": true
 }
-==============================
-/print-equation
+```
+----
+#### /print-equation
 GET
-request
+Summary: Print the Equation of the Id in the request
+
+
+#####Example
+- Request
+```
 {
   "Id": "3"
 }
-response
+```
+- Response
+```
 {
     "Equation": "1 + 2"
 }
-==============================
-/eval-equation
+```
+----
+#### /eval-equation
 GET
-request
+Summary: Evaluates the Equation of the Id in the request
+
+
+#####Example
+- Request
+```
 {
   "Id": "3"
 }
-response
+```
+- Response
+```
 {
     "Result": 3.0
 }
-==============================
-/clear-equation
+```
+----
+#### /clear-equation
 POST
-request
+Summary: Clears the Equation of the Id in the request
+
+
+#####Example
+- Request
+```
 {
   "Id": "3"
 }
-response
+```
+- Response
+```
 {
     "Success": true
 }
-==============================
+```
