@@ -1,4 +1,4 @@
-# WorkSample
+# Calculation Code Sample
 ##### Author: William McCarty
 ##### 2024
 ----
